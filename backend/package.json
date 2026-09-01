@@ -1,0 +1,30 @@
+{
+  "name": "xface43-tcp-panel",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail --names API,WEB --prefix-colors blue,green \"tsx watch server.ts\" \"vite ../web --config ../web/vite.config.ts\"",
+    "dev:backend": "tsx watch server.ts",
+    "dev:web": "vite ../web --config ../web/vite.config.ts",
+    "build": "tsc --noEmit && vite build ../web --config ../web/vite.config.ts",
+    "start:backend": "tsx server.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.2",
+    "concurrently": "^9.2.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3"
+  }
+}

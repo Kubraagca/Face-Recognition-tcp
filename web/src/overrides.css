@@ -1,0 +1,57 @@
+/* The SDK-shaped registration form replaces the original legacy PIN-only card. */
+.form-card { display: none !important; }
+.new-user-form { padding: 16px; border: 1px solid #285271; border-radius: 9px; background: #0a192b; margin: 12px 0; }
+.new-user-form .form-help { color: #9bb0c9; font-size: 12px; }
+.method-picker { display: none; }
+
+/* The action clears the local connection state; present it as disconnect. */
+.connection .action.subtle { font-size: 0; }
+.connection .action.subtle::after { content: "Bağlantıyı kes"; font-size: 12px; }
+
+/* Keep each user's profile photo tools in a dedicated right-hand column. */
+.user-row { grid-template-columns: minmax(180px, 1fr) minmax(300px, 2fr) max-content; align-items: start; }
+.user-main { display: contents; }
+.user-detail-link { grid-column: 1; grid-row: 1; }
+.enrollment-info { grid-column: 2; grid-row: 1; }
+.user-actions { grid-column: 3; grid-row: 1; display: flex; align-items: start; }
+.user-actions .action-group { align-content: start; min-width: 0; }
+.user-actions .action-group:last-child { grid-column: 3; grid-row: 1; border-right: 0; }
+/* Profile-photo upload is intentionally hidden from the current PIN/biometric UI. */
+.user-actions { grid-template-columns: max-content max-content; }
+.user-actions .action-group:last-child { display: none; }
+.user-detail-link { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 0; border: 0; background: transparent; text-align: left; }
+.enrollment-info { display: grid; grid-template-columns: repeat(4, minmax(86px, 1fr)); gap: 6px; align-items: center; }
+.enrollment-info > span:first-child { grid-column: 1 / -1; }
+.enrollment-info > span:last-child { display: none; }
+.user-actions .action-group:nth-child(2) { display: none; }
+.user-detail-panel { padding: 4px; }
+.device-time-form { max-width: none; align-items: end; margin-top: 10px; }
+.device-time-form input { flex: 1 1 230px; min-width: 210px; }
+.device-time-form .action { flex: 0 0 auto; white-space: nowrap; }
+/* System controls share one horizontal toolbar. */
+.operation-pane:has(.device-time-form) { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+.operation-pane:has(.device-time-form) > h3,
+.operation-pane:has(.device-time-form) > p,
+.operation-pane:has(.device-time-form) > .readout { flex: 0 0 100%; }
+.operation-pane:has(.device-time-form) > .action-row,
+.operation-pane:has(.device-time-form) > .device-time-form { display: contents; }
+.user-detail-head { display: flex; justify-content: space-between; align-items: start; gap: 14px; margin-bottom: 16px; }
+.detail-methods { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; }
+.detail-methods > div { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid #294766; border-radius: 8px; background: #10243a; }
+.detail-methods > div:nth-child(4) { display: none; }
+.detail-methods b { color: #cfe0f5; font-size: 12px; }
+.detail-methods span { color: #55e6ca; font-size: 12px; }
+.detail-methods .action { font-size: 10px; padding: 7px 8px; }
+@media (max-width: 700px) {
+  .user-row { grid-template-columns: 1fr; }
+  .user-detail-link, .enrollment-info, .user-actions { grid-column: 1; grid-row: auto; }
+  .user-actions { display: flex; }
+  .enrollment-info { grid-template-columns: repeat(2, minmax(90px, 1fr)); }
+  .user-actions .action-group:last-child { grid-column: auto; grid-row: auto; }
+  .detail-methods { grid-template-columns: 1fr 1fr; }
+  .device-time-form { display: grid; grid-template-columns: 1fr 1fr; }
+  .device-time-form input { grid-column: 1 / -1; min-width: 0; }
+  .operation-pane:has(.device-time-form) { display: block; }
+  .operation-pane:has(.device-time-form) > .action-row,
+  .operation-pane:has(.device-time-form) > .device-time-form { display: grid; }
+}
